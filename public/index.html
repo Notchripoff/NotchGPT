@@ -107,7 +107,7 @@
         });
 
         async function getAIResponse(userMessage) {
-            const response = await fetch('/api/get-ai-response', { // Ensure this URL is correct
+            const response = await fetch('/api/get-ai-response', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -150,4 +150,3 @@
     </script>
 </body>
 </html>
-
