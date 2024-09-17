@@ -107,19 +107,20 @@
         });
 
         async function getAIResponse(userMessage) {
-            const response = await fetch('/api/get-ai-response', { // Use your server-side endpoint here
+            const response = await fetch('/api/get-ai-response', { // Ensure this URL is correct
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     prompt: userMessage,
-                    max_tokens: 100
+                    max_tokens: 150 // Adjust as needed
                 })
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Unknown error occurred');
             }
 
             const data = await response.json();
@@ -149,3 +150,4 @@
     </script>
 </body>
 </html>
+
